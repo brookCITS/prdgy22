@@ -1,32 +1,30 @@
 import math
+
+#define class
 class Shape:
 
+    #define init method
     def __init__(self, name):
-        self.name = name
 
+    #define area method
     def area(self):
-        pass
 
 
+#define class
 class Circle(Shape):
-    def __init__(self, r):
-        super().__init__('Circle')
-        self.radius = r
+    #define init method
 
-    def area(self):
-        self.area = 3 * (self.radius ** 2.0)
-        return self.area
 
-class Rectangle(Shape):
-    def __init__(self, l, w):
-        super().__init__('Rectangle')
-        self.radius = r
-        self.length = l
-        self.width = w
+    #define area method
 
-    def area(self):
-        self.area = self.length * self.width
-        return self.area
+
+#define class
+
+    #define init method
+
+
+    #define area method
+
 
 
 cir = Circle(5)
