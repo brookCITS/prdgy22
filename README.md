@@ -1,71 +1,34 @@
-# Week 1 - CS Concepts
+# Week 2 - OOP Concepts
 
-## 1 - variables
+## 1 - Functions
+Create a function that will take two inputs (start, end) and generate and return a list containing all the even numbers between the two inputs. ex: start = 10 and end = 20 will out put [10,12,14,16,18,20]
 
-given the string city = 'Baltimore' write the code
+Add a third input that's a boolean (start, end, even) and based on its value return a list of even numbers or odd numbers. ex: even = False will return [11,13,15,17,19]
 
-to print out the 4th character in the string
+save it in the file even.py
 
-to print out the last character in the string
+## 2 - Classes
+create a character class with instance variables name, level, position, and lives. The name should be initialized when the instance of the class is created but the rest should be initialized with default values (level = 0, lives = 3, and position = 0).
 
-to print out a slice of the first 4 characters in the string
+- create a method called move() which takes a value speed and changes the position
+- create a method called level_up() which adds 1 to the level
+- create a method called kill() which subtracts 1 from lives
+- create a method called bonus() which adds 1 to lives
+- create 4 instance of this class and test all the methods twice
 
+## 3 - Inheritance
+Create a class called Shapes with an instance variable name that gets defined in the init method. Add a method called area which will do nothing (pass).
 
-## 2 - conditionals
+create a new class called Circle which inherits from Shapes class. override the init method so it takes a radius and saves it as an instance variable. override the area method so it returns the area of a circle with the given radius.
 
-Write a code that will ask the user to enter an integer and checks if it is even or odd. Save it in a file called is_even.py
-
-Write a code that will ask the user to enter their annual income and returns their federal tax bracket and how much they would pay in taxes. save the script in a file called taxes.py
-
-10% <- $0 to $9,950
-12% <- $9,951 to $40,525
-22% <- $40,526 to $86,375
-40% <- $86,376 or above
-
-
-## 3 - Loops
-
-Write a program that will ask the user to input a password. If the password entered is correct, the code should exit with a welcome message. Otherwise, it should ask the user to enter the password again up-to 3 times, after which, it should exit with an error message. save the script in a file called password.py
-
-Write a program that will take a word input from user then prints out the word without it's vowels. save the script in a file called vowels.py
-
-Write a program which will find all such numbers which are divisible by 7 but are not a multiple of 5,
-between 2000 and 3200 (both included).
-The numbers obtained should be printed in a comma-separated sequence on a single line.
-Hint: Consider using range(#begin, #end) method
+Create another class called Rectangle which inherits from Shapes class. override the init method so it takes a length, width and save them as an instance variables. override the area method so it returns the area of a Rectangle with the given length and width.
 
 
-## 4 - Data Structures
+## 4 - Polymorphism
+## Payroll
+Create a class called payroll which has two instance variable, company name and employee_list.
+- initialize the name by passing the value to the init method but for the employee_list, just make it an empty employee_list
 
-Given a list of numbers. write a program to turn every item of a list into its square.
+- create a method called add_employee() which takes an Employee object and adds it to the employee_list
 
-
-numbers = [1, 2, 3, 4, 5, 6, 7]
-numbers2 = []
-
-for i in numbers:
-  numbers2.append(i**2)
-
-
-Return a new set of identical items from two sets
-set1 = {10, 20, 30, 40, 50}
-set2 = {30, 40, 50, 60, 70}
-
-Concatenate two lists in the following order to create list3
-list1 = ["Hello ", "Thank you "]
-list2 = ["Dear", "Sir"]
-list3 = ['Hello Dear', 'Hello Sir', 'Thank you  Dear', 'Thank you  Sir']
-
-Edit the file wordCount.py to create a program that will take a paragraph and stores it into a dictionary with the words from the paragraph as the keys and the number of instances of the word as the values
-example:
-input >>> "I be flying high, shawty, I be flying high I be flying high, shawty, I be flying high I be flying high, shawty, I be flying high"
-output >>> {'I': 6, 'be': 6, 'flying': 6, 'high': 6, 'shawty': 3}
-
-paragraph = "I be flying high, shawty, I be flying high I be flying high, shawty, I be flying high I be flying high, shawty, I be flying high"
-list = ["I", "be", ]
-
-
-
-
-
-dictionary
+- create a method called get_payroll() which has no input but will loop through the employee_list and print out the name and salary of the employee (call the payment method on the employee object to get the salary)
