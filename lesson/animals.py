@@ -16,7 +16,8 @@ class Cat(Animal):
 
 c= Cat('kitty')
 c.talk()
-#d=Dog('Doggy')
-#d.talk()
-#a = Animal('Lion')
-#a.talk('RAWR')
+print(c.name)
+d=Dog('Doggy')
+d.talk()
+a = Animal('Lion')
+a.talk('RAWR')

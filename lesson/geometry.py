@@ -36,13 +36,13 @@ class Quadrilateral(Polygon):
 R = Triangle()
 R.sides()
 
-#K = Quadrilateral()
-#K.sides()
+K = Quadrilateral()
+K.sides()
 
-#R = Pentagon()
-#R.sides()
+R = Pentagon()
+R.sides()
 
-#K = Hexagon()
-#K.sides()
+K = Hexagon()
+K.sides()
 # what would happen if we try to creat an instance of the abstract class
 #a = Polygon()
