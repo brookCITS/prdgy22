@@ -5,9 +5,11 @@ class Shape:
 
     #define init method
     def __init__(self, name):
+        self.name = name
 
     #define area method
     def area(self):
+        pass
 
 
 #define class

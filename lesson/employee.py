@@ -23,6 +23,3 @@ class Lead(Developer):
     def payment (self, hours):
 
         return self.sal*hours + 3*Employee.bonus
-
-brook = Lead("Brook", 30)
-print(brook.payment(10))
