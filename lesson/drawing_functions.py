@@ -24,10 +24,8 @@ def main():
 
     #call drawing functioncs
     draw_grass()
-    draw_snow_person(88,88)
-    draw_snow_person(258,88)
-    draw_snow_person(358,88)
-
+    for index in range(1,5):
+        draw_snow_person(index*150,88+index)
 
 
     arcade.finish_render()
