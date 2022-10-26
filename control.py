@@ -10,15 +10,9 @@ SCREEN_TITLE = "Platformer"
 CHARACTER_SCALING = 1
 TILE_SCALING = 0.5
 
-def draw_coins(gameObject):
-    for x in range(30):
-        coin = arcade.Sprite("src/img/coinGold.png", 0.2)
-        a = int(SCREEN_WIDTH/3)
-        b = int(SCREEN_HEIGHT/3)
-        coin.center_x = random.randint(a, 2*a)
-        coin.center_y = random.randint(b, 2*b)
-        gameObject.coin_list.append(coin)
-
+PLAYER_MOVEMENT_SPEED = 5
+GRAVITY = 1
+PLAYER_JUMP_SPEED = 20
 
 class MyGame(arcade.Window):
 
@@ -29,7 +23,8 @@ class MyGame(arcade.Window):
         # go into a list.
         self.wall_list = None
         self.player_list = None
-        self.coin_list = None
+
+        self.physics_engine = None
 
         # Separate variable that holds the player sprite
         self.player_sprite = None
@@ -43,7 +38,7 @@ class MyGame(arcade.Window):
          # Create the Sprite lists
         self.player_list = arcade.SpriteList()
         self.wall_list = arcade.SpriteList(use_spatial_hash=True)
-        self.coin_list = arcade.SpriteList()
+
 
         self.player_sprite = arcade.Sprite("src/img/wizard.png", CHARACTER_SCALING)
         self.player_sprite.center_x = 64
@@ -65,10 +60,10 @@ class MyGame(arcade.Window):
             wall.center_x = x
             wall.center_y = 1*SCREEN_HEIGHT/3
             self.wall_list.append(wall)
-
-        draw_coins(self)
-
-
+        # Create the 'physics engine'
+        self.physics_engine = arcade.PhysicsEnginePlatformer(
+            self.player_sprite, self.wall_list, gravity_constant=GRAVITY
+        )
 
 
     def on_draw(self):
@@ -77,12 +72,36 @@ class MyGame(arcade.Window):
         # Draw our sprites
         self.player_list.draw()
         self.wall_list.draw()
-        self.coin_list.draw()
         arcade.draw_text("Lives: "+str(self.player_lives),
                          77,
                          620,
                          arcade.color.BLACK,
                          12)
+
+    def on_update(self, delta_time):
+        """Movement and game logic"""
+        self.physics_engine.update()
+
+    def on_key_press(self, key, modifiers):
+        """Called whenever a key is pressed."""
+        print(str(key)+" is pressed")
+
+        if key == arcade.key.UP or key == arcade.key.W:
+            if self.physics_engine.can_jump():
+                self.player_sprite.change_y = PLAYER_JUMP_SPEED
+
+        elif key == arcade.key.LEFT or key == arcade.key.A:
+            self.player_sprite.change_x = -PLAYER_MOVEMENT_SPEED
+        elif key == arcade.key.RIGHT or key == arcade.key.D:
+            self.player_sprite.change_x = PLAYER_MOVEMENT_SPEED
+
+    def on_key_release(self, key, modifiers):
+        """Called when the user releases a key."""
+
+        if key == arcade.key.LEFT or key == arcade.key.A:
+            self.player_sprite.change_x = 0
+        elif key == arcade.key.RIGHT or key == arcade.key.D:
+            self.player_sprite.change_x = 0
 
 
 def main():
